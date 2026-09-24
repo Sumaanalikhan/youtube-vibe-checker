@@ -1,46 +1,35 @@
-Multilingual YouTube Comment Vibe Checker
-A real-time Streamlit web app that analyzes public YouTube comment sentiment using Hugging Face transformers, supporting multi-lingual and mixed-script text like English and Roman Urdu.
+# Multilingual YouTube Vibe Checker
 
+A containerized application that analyzes YouTube content and viewer sentiment across multiple languages. This project is fully integrated with a custom Continuous Integration and Continuous Deployment (CI/CD) pipeline built from scratch using Jenkins and Docker.
 
-✨ Features
-•	Live Comment Ingestion: Fetches top-level comments via the YouTube Data API v3.
+## 🚀 Tech Stack
 
-•	Cross-Lingual Sentiment Analysis: Classifies text into Positive, Negative, and Neutral polarities using Hugging Face models.
+*   **Application:** Python, Streamlit
+*   **Version Control:** Git & GitHub
+*   **Containerization:** Docker, Docker Hub
+*   **CI/CD Automation:** Jenkins (Declarative Pipeline)
+*   **Networking / Webhooks:** ngrok
 
-•	Interactive UI: Enter your YouTube API key and target video URL directly on the frontend interface, and explore results via dynamic Plotly charts.
+## 🏗️ Architecture & CI/CD Pipeline
 
-🚀 How to Run Locally
-1. Clone the Repository
-Bash
-git clone https://github.com/your-username/youtube-vibe-checker.git
-cd youtube-vibe-checker
-2. Set Up a Virtual Environment
-Bash
-python -m venv venv
-# On Windows PowerShell:
-venv\Scripts\Activate.ps1
-# On macOS/Linux:
-source venv/bin/activate
-3. Install Dependencies
-Bash
-pip install -r requirements.txt
-4. Get Your Free YouTube API Key
-1.	Go to the Google Cloud Console.
+This repository is connected to a local Jenkins server via GitHub Webhooks and an ngrok tunneling service. The automation workflow ensures that every code push is seamlessly built and delivered:
 
-2.	Create a new project (or select an existing one).
+1.  **Code Commit:** Developer pushes code changes to the `main` branch on GitHub.
+2.  **Webhook Trigger:** GitHub sends a JSON payload to the Jenkins server through a secure ngrok tunnel.
+3.  **Automated Checkout:** Jenkins receives the signal and automatically clones the latest repository state.
+4.  **Container Build:** Jenkins executes `docker build` using the project's `Dockerfile` to create a fresh image.
+5.  **Registry Push:** Jenkins securely logs into Docker Hub using encrypted credentials and pushes the newly versioned image (`sumaanalikhan/youtube-vibe-checker:v1.0.0`).
 
-3.	Navigate to Enabled APIs & Services and click Enable APIs and Services.
+## ⚙️ Prerequisites
 
-4.	Search for YouTube Data API v3 and click Enable.
+To run or develop this project locally, you will need:
+*   Python 3.x
+*   Docker Desktop / Docker Engine
+*   Git
 
-5.	Go to the Credentials tab on the left menu, click Create Credentials, and select API Key. Copy your new key for free.
+## 💻 Local Development Setup
 
-5. Launch the Application
-Start the Streamlit server:
-
-
-Bash
-streamlit run app.py
-Open the local URL shown in your terminal (usually http://localhost:8501), paste your newly generated YouTube API key and any YouTube video URL right into the front screen, and analyze the vibes!
-
-
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/sumaanalikhan/youtube-vibe-checker.git](https://github.com/sumaanalikhan/youtube-vibe-checker.git)
+   cd youtube-vibe-checker
