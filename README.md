@@ -32,4 +32,4 @@ To run or develop this project locally, you will need:
 1. **Clone the repository:**
    ```bash
    git clone [https://github.com/sumaanalikhan/youtube-vibe-checker.git](https://github.com/sumaanalikhan/youtube-vibe-checker.git)
-   cd youtube-vibe-checker
+   cd youtube-vibe-checker  --
